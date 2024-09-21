@@ -27,9 +27,9 @@ function Settings() {	// edit / change these as needed !
 	var colors = ["LightSalmon","IndianRed","LightSkyBlue","Red"];
 	settings["colors"] = colors;
 	settings["enableDescPopup"] = false;
-	settings["zoffset_single"] = 0;
-	settings["zoffset_minutes"] = 0;
-	settings["zoffset_recur"] = 0;
+	settings["tzoffset_single"] = 0;
+	settings["tzoffset_minutes"] = 0;
+	settings["tzoffset_recur"] = 0;
 	settings["useIcsTimezone"] = 0;
 	return settings;
 }

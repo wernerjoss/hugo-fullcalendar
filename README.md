@@ -37,9 +37,9 @@ function Settings() {	// edit / change these as needed !
 	var colors = ["LightSalmon","IndianRed","LightSkyBlue","Red"];
 	settings["colors"] = colors;
 	settings["enableDescPopup"] = false;
-	settings["zoffset_single"] = 0;
-	settings["zoffset_minutes"] = 0;
-	settings["zoffset_recur"] = 0;
+	settings["tzoffset_single"] = 0;
+	settings["tzoffset_minutes"] = 0;
+	settings["tzoffset_recur"] = 0;
 	settings["useIcsTimezone"] = 0;
 	return settings;
 }
@@ -48,6 +48,7 @@ The most important setting is "pagecalendars" which is supposed to hold the cale
 As mentioned, you can also show a Picture for the current month above the calendar widget (see screenshot obove), just put 12 Image Files named 'January.jpg', 'February.jpg', ... , 'December.jpg' in the Folder for your Page where the Calendar will be placed.  
 (Note that Image File names must match Month names according to your locale setting, so, for locale: de, use 'Januar.jpg' ...).  
 Finally, it should be noted that this Shortcode relies on jquery, which is loaded by most Themes - in case you are using a Theme that does not do this, jquery is automatically loaded, no additional config Option needed for that.  
+
 ## Advanced Usage
 As an addition to the standard use case, there is an elegant way to automatically update your .ics Files from remote Calendars in case those are hosted on a CalDav Server (e.g. Owncloud, Nextcloud...):
 In this case, you can just use [caldav2ics](https://github.com/wernerjoss/caldav2ics) via cron job to automatically update your ics Files shown by the Fullcalendar Shortcode, so that remote Calendar content, usually maintained in separate Calendar Apps (such as Google Calendar or Lightning) is automatically propagated to your Website.  

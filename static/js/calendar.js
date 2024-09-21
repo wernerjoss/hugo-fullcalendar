@@ -271,14 +271,14 @@ function whenJqReady() {
 
 						//	tz_offset_single = 0;	//		now from plugin config 01.01.22
 						if (verbose) console.log('tz_offset_single:', tz_offset_single);
-						if (tz_offset_single != null) {	// wichtig: Abfrage auf null, NICHT 0 ! 21.09,24
+						if ((tz_offset_single != 0)  && (start != null)) {	// wichtig: Abfrage auf null, NICHT 0 ! 21.09,24
 							start["hour"] = (start["hour"] + Number(tz_offset_single)) % 24;	// add hours from config, type conversion mandatory ! :)
 							fcevents["start"] = start.toJSDate();
 							if (verbose) console.log('newstart', start);
 						}
 						//	tz_offset_minutes = 15;	//
 						if (verbose) console.log('tz_offset_minutes:', tz_offset_minutes);
-						if (tz_offset_minutes != null) {
+						if ((tz_offset_minutes != 0) && (start != null)) {
 							start["minute"] = (start["minute"] + Number(tz_offset_minutes));	// add minutes from config, do NOT use modulo 60 !
 							fcevents["start"] = start.toJSDate();
 							if (verbose) console.log('newstart', start);

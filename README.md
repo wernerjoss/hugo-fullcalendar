@@ -30,6 +30,8 @@ Basic Configuration is done in the File js/calendar.js in function Settings() li
 ```
 function Settings() {	// edit / change these as needed !
 	var settings = [];
+	var verbose = false;
+	settings["verbose"] = verbose;
 	settings["locale"] = 'de';
 	settings["pagecalendars"] = ["events.ics","holidays.ics"];
 	settings["weekNums"] = true;

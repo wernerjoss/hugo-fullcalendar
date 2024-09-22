@@ -1,7 +1,8 @@
 // this is a hugo port from grav-plugin-fullcalendar/calendar.js
 // currently with hardcoded Parameters
-// TODO:
+// DONE:
 // remove unused cors cruft :-)
+// TODO:
 // get Parameters via shortcode
 
 // Load jQuery when it is not loaded already by the theme
@@ -20,6 +21,8 @@ if (typeof jQuery=='undefined') {
 	
 function Settings() {	// edit / change these as needed !
 	var settings = [];
+	var verbose = false;
+	settings["verbose"] = verbose;
 	settings["locale"] = 'de';
 	settings["pagecalendars"] = ["events.ics","holidays.ics"];
 	settings["weekNums"] = true;
@@ -35,13 +38,15 @@ function Settings() {	// edit / change these as needed !
 }
 
 function whenJqReady() {
-	var verbose = false;
+	var defaultLocale = 'en';
 	settings = Settings();
+	var verbose = false;
+	if (settings["verbose"] != null)
+		verbose = settings["verbose"];
+	var LocaleCode = defaultLocale;
 	if (settings["locale"].length > 0)
 		LocaleCode = settings["locale"];
-	else
-		LocaleCode = defaultLocale;
-		
+	
 	var weekNums = settings["weekNums"];
 	var firstWeekDay = 0;	// Default, new 20.03.23
 	var pagecalendars = settings["pagecalendars"];

@@ -10,11 +10,12 @@ Actually, this is a port of the [Grav Plugin Fullcalendar](http://github.com/wer
 Installing the Fullcalendar plugin can be done in one of two ways. 
 1. Copy the layouts folder over (containing the shortcut)
 2. Copy the static folder (js & fc4)
-3. Call the load shortcut in the Page where your Calenadr should be shown (AND where your .ics calendar files are): {{< load-calendar >}}
+3. Copy your .ics File(s) to your Calendar Page Folder and adapt the Settings (see Configuration) accordingly
+4. Call the load shortcut in the Page where your Calenadr should be shown (AND where your .ics calendar files are): {{< load-calendar >}}
 
 ## Usage
 
-Once installed and enabled, you can use this Plugin to parse ICS Calendar File(s) - these must be found in same folder where you add the shortcode in your calendar.md file, e.g
+Once installed, you can use this Plugin to parse ICS Calendar File(s) - these must be found in same folder where you add the shortcode in your calendar.md file, e.g
 ```
 blog/calendar
 ├── calendar.md
@@ -72,5 +73,5 @@ This Shortcode is built on [fullcalendar.io](https://fullcalendar.io), [jakubroz
 
 ## To Do
 
-* make Configuration easier by Parameters to the Shortcode
+* make Configuration easier and Update-safe by Parameters to the Shortcode
 * (maybe) Upgrade included Fullcalendar.io to Version 5 (currently: Version 4)

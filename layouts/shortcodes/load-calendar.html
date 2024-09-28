@@ -1,3 +1,15 @@
+{{ if .IsNamedParams }}
+	<!--	Set Parameters for calendar.js via DOM	-->
+	<div id='locale' style='display:none;'>{{ .Get "locale" }}</div>
+	<div id='pagecalendars' style='display:none;'>{{ .Get "icsfiles" }}</div>
+	<div id='colors' style='display:none;'>{{ .Get "colors" }}</div>
+{{ else }}
+<hr>
+	<h1>Hugo Fullcalendar</h1>
+	<h2>Please provide named Paramters, at least icsfiles !</h2>
+	<hr>
+{{ end }}
+
 <div id="actMonth"></div>
 <div id="calendar"></div>
 <div id="legend"></div>
@@ -9,9 +21,6 @@
  
 <!--JS-->
 <script src="/js/jquery-3.x.min.js"></script>
-<!--    obsolete :-)
-<script src="/js/jquery.ajax-cross-origin.min.js"></script>
--->
 <script src="/js/ical.js/build/ical.min.js"></script>
 <script src="/js/popper.min.js"></script>
 <script src="/js/tippy-bundle.umd.min.js"></script>

@@ -2,7 +2,6 @@
 // currently with hardcoded Parameters
 // DONE:
 // remove unused cors cruft :-)
-// TODO:
 // get Parameters via shortcode
 
 // Load jQuery when it is not loaded already by the theme
@@ -17,18 +16,33 @@ if (typeof jQuery=='undefined') {
 	whenJqReady();
 }
 
-// define Parameters, hardcoded, see TODO above
+// define Parameters, mostly still hardcoded, see DONE above
 	
 function Settings() {	// edit / change these as needed !
 	var settings = [];
 	var verbose = false;
 	settings["verbose"] = verbose;
-	settings["locale"] = 'de';
-	settings["pagecalendars"] = ["events.ics","holidays.ics"];
+	var defaultLocale = "en";
+	settings["locale"] = defaultLocale;
+	var locale = jQuery('#locale').text();	//	get Paramter from DOM
+	if (locale.length > 0)
+		settings["locale"] = 'de';
+	settings["pagecalendars"] = [];
+	var pageFilestring = jQuery('#pagecalendars').text();	//	get Paramter from DOM
+	//	console.log('pageFilestring:', pageFilestring);
+	var calendars = pageFilestring.split(",");
+	if (verbose)	console.log('calendars:', calendars);
+	if (pageFilestring.length > 0)
+		settings["pagecalendars"] = calendars;
 	settings["weekNums"] = true;
 	settings["showlegend"] = true;
-	var colors = ["LightSalmon","IndianRed","LightSkyBlue","Red"];
-	settings["colors"] = colors;
+	var defaultcolors = ["LightSalmon","IndianRed","LightSkyBlue","Red","Blue","Green","Black","Grey"];
+	settings["colors"] = defaultcolors;
+	var colorString = jQuery('#colors').text();	//	get Paramter from DOM
+	var colors = colorString.split(",");
+	if (verbose)	console.log("colors: ", colors);
+	if (colorString.length > 0)
+		settings["colors"] = colors;
 	settings["enableDescPopup"] = false;
 	settings["tzoffset_single"] = 0;
 	settings["tzoffset_minutes"] = 0;
@@ -276,14 +290,14 @@ function whenJqReady() {
 
 						//	tz_offset_single = 0;	//		now from plugin config 01.01.22
 						if (verbose) console.log('tz_offset_single:', tz_offset_single);
-						if ((tz_offset_single != 0)  && (start != null)) {	// wichtig: Abfrage auf null, NICHT 0 ! 21.09,24
+						if ((tz_offset_single != 0) && (start != null)) {	// wichtig: Abfrage auf 0, NICHT null ! 21.09,24
 							start["hour"] = (start["hour"] + Number(tz_offset_single)) % 24;	// add hours from config, type conversion mandatory ! :)
 							fcevents["start"] = start.toJSDate();
 							if (verbose) console.log('newstart', start);
 						}
 						//	tz_offset_minutes = 15;	//
 						if (verbose) console.log('tz_offset_minutes:', tz_offset_minutes);
-						if ((tz_offset_minutes != 0) && (start != null)) {
+						if ((tz_offset_minutes != 0)  && (start != null)) {
 							start["minute"] = (start["minute"] + Number(tz_offset_minutes));	// add minutes from config, do NOT use modulo 60 !
 							fcevents["start"] = start.toJSDate();
 							if (verbose) console.log('newstart', start);

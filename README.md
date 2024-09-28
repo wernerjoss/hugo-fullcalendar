@@ -24,30 +24,12 @@ blog/calendar
 ```
 In calendar.md, the shortcode must be added somewhere like this:
 
-    {{< load-calendar >}}
+    {{< load-calendar locale="de" icsfiles="events.ics,holidays.ics">}}
 
 ## Configuration
-Basic Configuration is done in the File js/calendar.js in function Settings() like so:
-```
-function Settings() {	// edit / change these as needed !
-	var settings = [];
-	var verbose = false;
-	settings["verbose"] = verbose;
-	settings["locale"] = 'de';
-	settings["pagecalendars"] = ["events.ics","holidays.ics"];
-	settings["weekNums"] = true;
-	settings["showlegend"] = true;
-	var colors = ["LightSalmon","IndianRed","LightSkyBlue","Red"];
-	settings["colors"] = colors;
-	settings["enableDescPopup"] = false;
-	settings["tzoffset_single"] = 0;
-	settings["tzoffset_minutes"] = 0;
-	settings["tzoffset_recur"] = 0;
-	settings["useIcsTimezone"] = 0;
-	return settings;
-}
-```
-The most important setting is "pagecalendars" which is supposed to hold the calendar .ics file name(s) - these files must be found in the same folder where the Shortcode is used.  
+Besides locale and icsfiles, there is also a Paramter called colors, e.g ``` colors="Red,Green,Blue" ``` which can be used to customize the colors of the Calendar Entry in the Grid view.  
+Further Configuration can be done in the File js/calendar.js in function Settings(), but keep in mind these could be overwritten by an update.  
+The most important setting is "icsfiles" which is supposed to hold the calendar .ics file name(s) - these files must be found in the same folder where the Shortcode is used.  
 As mentioned, you can also show a Picture for the current month above the calendar widget (see screenshot obove), just put 12 Image Files named 'January.jpg', 'February.jpg', ... , 'December.jpg' in the Folder for your Page where the Calendar will be placed.  
 (Note that Image File names must match Month names according to your locale setting, so, for locale: de, use 'Januar.jpg' ...).  
 Finally, it should be noted that this Shortcode relies on jquery, which is loaded by most Themes - in case you are using a Theme that does not do this, jquery is automatically loaded, no additional config Option needed for that.  

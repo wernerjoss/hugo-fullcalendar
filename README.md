@@ -22,12 +22,13 @@ blog/calendar
 ├── events.ics
 └── holidays.ics
 ```
+The Calendar Files will be picked up automatically, there is no (more) need to explicitly specify them as Parameters in the Shortcode (from v.1.20).  
 In calendar.md, the shortcode must be added somewhere like this:
 
-    {{< load-calendar locale="de" icsfiles="events.ics,holidays.ics">}}
+    {{< load-calendar locale="de">}}
 
 ## Configuration
-Besides locale and icsfiles, there is also a Paramter called colors, e.g ``` colors="Red,Green,Blue" ``` which can be used to customize the colors of the Calendar Entry in the Grid view.  
+Besides locale, there is also a Paramter called colors, e.g ``` colors="Red,Green,Blue" ``` which can be used to customize the colors of the Calendar Entry in the Grid view.  
 Further Configuration can be done in the File js/calendar.js in function Settings(), but keep in mind these could be overwritten by an update.  
 The most important setting is "icsfiles" which is supposed to hold the calendar .ics file name(s) - these files must be found in the same folder where the Shortcode is used.  
 As mentioned, you can also show a Picture for the current month above the calendar widget (see screenshot obove), just put 12 Image Files named 'January.jpg', 'February.jpg', ... , 'December.jpg' in the Folder for your Page where the Calendar will be placed.  

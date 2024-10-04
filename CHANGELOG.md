@@ -1,3 +1,9 @@
+# v1.2.0
+##  10/04/2024
+
+1. [](#new)
+    * ics Files in Page Folder are now picked up automatically
+
 # v1.1.0
 ##  09/28/2024
 

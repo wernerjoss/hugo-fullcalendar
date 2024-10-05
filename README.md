@@ -22,7 +22,7 @@ blog/calendar
 ├── events.ics
 └── holidays.ics
 ```
-The Calendar Files will be picked up automatically, there is no (more) need to explicitly specify them as Parameters in the Shortcode (from v.1.20).  
+The Calendar Files will be picked up automatically, there is no (more) need to explicitly specify them as Parameters in the Shortcode (from v1.2.0).  
 In calendar.md, the shortcode must be added somewhere like this:
 
     {{< load-calendar locale="de">}}

@@ -5,7 +5,7 @@ Find .ics Files in Page Folder and use them as pagecalendars	04.10.24
 {{ $scratch.Set "calendars" "" }}
 
 {{ range .Page.Resources.ByType "text" }}
-	{ if (hasSuffix .Title "ics") }}
+	{{ if (hasSuffix .Title "ics") }}
 		{{ $scratch.Add "calendars" .Title }}
 		{{ $scratch.Add "calendars" "," }}
 	{{ end }}

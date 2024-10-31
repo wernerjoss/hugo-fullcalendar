@@ -11,7 +11,7 @@ Installing the Fullcalendar plugin can be done in one of two ways.
 1. Copy the layouts folder over (containing the shortcut)
 2. Copy the static folder (js & fc4)
 3. Copy your .ics File(s) to your Calendar Page Folder and adapt the Settings (see Configuration) accordingly
-4. Call the load shortcut in the Page where your Calenadr should be shown (AND where your .ics calendar files are): {{< load-calendar >}}
+4. Call the load shortcut in the Page where your Calendar should be shown (AND where your .ics calendar files are): {{< load-calendar >}}
 
 ## Usage
 
@@ -30,7 +30,6 @@ In calendar.md, the shortcode must be added somewhere like this:
 ## Configuration
 Besides locale, there is also a Paramter called colors, e.g ``` colors="Red,Green,Blue" ``` which can be used to customize the colors of the Calendar Entry in the Grid view.  
 Further Configuration can be done in the File js/calendar.js in function Settings(), but keep in mind these could be overwritten by an update.  
-The most important setting is "icsfiles" which is supposed to hold the calendar .ics file name(s) - these files must be found in the same folder where the Shortcode is used.  
 As mentioned, you can also show a Picture for the current month above the calendar widget (see screenshot obove), just put 12 Image Files named 'January.jpg', 'February.jpg', ... , 'December.jpg' in the Folder for your Page where the Calendar will be placed.  
 (Note that Image File names must match Month names according to your locale setting, so, for locale: de, use 'Januar.jpg' ...).  
 Finally, it should be noted that this Shortcode relies on jquery, which is loaded by most Themes - in case you are using a Theme that does not do this, jquery is automatically loaded, no additional config Option needed for that.  

@@ -9,7 +9,7 @@ Actually, this is a port of the [Grav Plugin Fullcalendar](http://github.com/wer
 
 Installing the Fullcalendar plugin can be done in one of two ways. 
 1. Copy the layouts folder over (containing the shortcut)
-2. Copy the static folder (js & fc4)
+2. Copy the static folder (js & fc4 - from v1.3.0: only fc6)
 3. Copy your .ics File(s) to your Calendar Page Folder and adapt the Settings (see Configuration) accordingly
 4. Call the load shortcut in the Page where your Calendar should be shown (AND where your .ics calendar files are): {{< load-calendar >}}
 
@@ -33,6 +33,7 @@ Further Configuration can be done in the File js/calendar.js in function Setting
 As mentioned, you can also show a Picture for the current month above the calendar widget (see screenshot obove), just put 12 Image Files named 'January.jpg', 'February.jpg', ... , 'December.jpg' in the Folder for your Page where the Calendar will be placed.  
 (Note that Image File names must match Month names according to your locale setting, so, for locale: de, use 'Januar.jpg' ...).  
 Finally, it should be noted that this Shortcode relies on jquery, which is loaded by most Themes - in case you are using a Theme that does not do this, jquery is automatically loaded, no additional config Option needed for that.  
+Also note that, from v1.3.0, jquery is automatically built into static/fc6/fc6.js
 
 ## Advanced Usage
 As an addition to the standard use case, there is an elegant way to automatically update your .ics Files from remote Calendars in case those are hosted on a CalDav Server (e.g. Owncloud, Nextcloud...):
@@ -47,13 +48,15 @@ Although having added the timezone-aware js Librarys from the fc4 packages, I co
 So I decided to implement some additional settings for the plugin, which can be used to correct for date/time shifts for single/recurring events (yes, it is unfortunately necessary to handle those separately, even w.r. to Daylight Saving Times).  
 Anyone having issues with incorrectly displayed Events Times, can now fiddle with these settings until everything looks ok - see the Hints in the admin backend.  
 Of course, this is not a really satisfactory Solution, I think the real cause is buried in some bugs of the fc4 release. Maybe (hopefully) the fc5 incarnations are better suited to this - porting this Plugin to fc5 is planned anyway, but will probably not happen in the near future.  
-So, for the time beeing, I hope most users can live with the workarounds presented here from Plugin Version 0.3.0.
+So, for the time beeing, I hope most users can live with the workarounds presented here from Plugin Version 0.3.0. 
+
+With the port to fullcalendar.io/icalendar, these issues should (hopefully) be resolved, however, this is not tested/confirmed yet !
 
 ## Credits
 
-This Shortcode is built on [fullcalendar.io](https://fullcalendar.io), [jakubroztocil/rrule](https://github.com/jakubroztocil/rrule) and [jsical](http://mozilla-comm.github.io/ical.js) - Javascript parser for rfc5545
+Until v1.2.0, this Shortcode is built on [fullcalendar.io](https://fullcalendar.io), [jakubroztocil/rrule](https://github.com/jakubroztocil/rrule) and [jsical](http://mozilla-comm.github.io/ical.js) - Javascript parser for rfc5545.
+From v1.3.0, it relies solely on fullcalendar.io and [npm ical](https://www.npmjs.com/package/ical).
 
 ## To Do
 
-* make Configuration easier and Update-safe by Parameters to the Shortcode
-* (maybe) Upgrade included Fullcalendar.io to Version 5 (currently: Version 4)
+* make this a theme (hugo submodule) or a hugo module for easier installation

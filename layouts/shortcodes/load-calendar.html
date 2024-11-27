@@ -1,52 +1,41 @@
-<!-- 
-Find .ics Files in Page Folder and use them as pagecalendars	04.10.24
--->
+{{ if .IsNamedParams }}
+	<!--	Set Parameters for calendar.js via DOM	-->
+	<div id='locale' style='display:none;'>{{ .Get "locale" }}</div>
+	<div id='colors' style='display:none;'>{{ .Get "colors" }}</div>
+{{ end }}
+
 {{ $scratch := newScratch }}	<!-- see https://neohugo.github.io/functions/scratch/	-->
 {{ $scratch.Set "calendars" "" }}
 
 {{ range .Page.Resources.ByType "text" }}
-	{{ if (hasSuffix .Title "ics") }}
-		{{ $scratch.Add "calendars" .Title }}
-		{{ $scratch.Add "calendars" "," }}
-	{{ end }}
+  <!--
+  <p>{{ .Title }}</p>
+  -->
+  {{ if (hasSuffix .Title "ics") }}
+    {{ $scratch.Add "calendars" .Title }}
+    {{ $scratch.Add "calendars" "," }}
+  {{ end }}
+  <!--
+  <p>{{ .RelPermalink }}</p>
+  {{ highlight (debug.Dump .MediaType) "JSON" }}
+  -->
 {{ end }}
 {{ if $scratch.Get "calendars" }}
-	<div id='pagecalendars' style='display:none;'>{{ $scratch.Get "calendars" }}</div>
+  <div id='pagecalendars' style='display:none;'>{{ $scratch.Get "calendars" }}</div>	<!-- {{ .Get "icsfiles" }}</div>	-->
+  <!--
+  see https://discourse.gohugo.io/t/ics-resource-not-recognized-by-resources-bytype/51790
+  -->
 
-	{{ if .IsNamedParams }}
-		<!--	Set Parameters for calendar.js via DOM	-->
-		<div id='locale' style='display:none;'>{{ .Get "locale" }}</div>
-		<div id='pagecalendars' style='display:none;'>{{ .Get "icsfiles" }}</div>
-		<div id='colors' style='display:none;'>{{ .Get "colors" }}</div>
-	{{ end }}
-
-	<div id="actMonth"></div>
-	<div id="calendar"></div>
-	<div id="legend"></div>
-	 
-	<!--CSS-->
-	<link rel="stylesheet" href="/fc4/packages/core/main.css"/>
-	<link rel="stylesheet" href="/fc4/packages/daygrid/main.css"/>
-	<link rel="stylesheet" href="/js/daygrid.css"/>
-	 
-	<!--JS-->
-	<script src="/js/jquery-3.x.min.js"></script>
-	<script src="/js/ical.js/build/ical.min.js"></script>
-	<script src="/js/popper.min.js"></script>
-	<script src="/js/tippy-bundle.umd.min.js"></script>
-	<script src="/fc4/packages/core/main.js"></script>
-	<script src="/fc4/packages/interaction/main.js"></script>
-	<script src="/fc4/packages/daygrid/main.js"></script>
-	<script src="/fc4/vendor/moment.js"></script>
-	<script src="/fc4/packages/moment/main.js"></script>
-	<script src="/fc4/vendor/moment-timezone-with-data-10-year-range.js"></script>
-	<script src="/fc4/packages/moment-timezone/main.js"></script>
-	<script src="/fc4/vendor/rrule-tz.js"></script>
-	<script src="/fc4/packages/rrule/main.js"></script>
-	<script src="/js/monthpic.js"></script>
-	<script src="/fc4/packages/core/locales/de.js"></script>
-	<script src="/js/calendar.js"></script>
+  <div id="actMonth"></div>
+  <div id="calendar"></div>
+  <div id="legend"></div>
+   
+  <!--CSS--> 
+  <link rel="stylesheet" href="/fc6/daygrid.css"/>
+  <!--JS-->
+  <script src="/fc6/monthpic6.js"></script>
+  <script src="/fc6/fc6.js"></script>
 
 {{ else }}
-	<p>No Calendar Files found in Page Folder, nothing to display !</p>
+  <p>No Calendars Found !</p>
 {{ end }}

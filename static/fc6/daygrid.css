@@ -1,0 +1,41 @@
+#calendar {
+  max-width: 100%;	/*	900px;	*/
+  margin: 0 auto;
+}
+
+#calendar .fc-col-header {
+	width: 100%!important;
+}
+
+#calendar .fc-daygrid-body {
+	width: 100%!important;
+}
+
+#calendar .fc-scrollgrid-sync-table {
+	width: 100%!important;
+}
+
+#calendar .fc-daygrid-event {
+	font-size: normal;	/* var(--fc-small-font-size);	*/
+	line-height: normal;
+}
+
+#calendar .fc-view-harness {
+	min-height: 580px;
+}
+#calendar th {
+	height: 18px;
+}
+
+#calendar tr td .fc-day {
+	height: 80px;
+}
+
+#actMonth img {
+	padding: 0 0 2rem 0;
+}
+#calendar {
+	font-size: large;	/*	14px;	*/
+	margin: 0 auto;
+	line-height: 0.5em;
+}
